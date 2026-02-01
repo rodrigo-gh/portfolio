@@ -9,6 +9,8 @@ import 'package:portfolio/features/portfolio/widgets/section_title.dart';
 import 'package:portfolio/features/portfolio/widgets/status_counter.dart';
 import 'package:portfolio/features/portfolio/widgets/trajectory_section.dart';
 
+import 'package:portfolio/features/portfolio/widgets/hero_section.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -47,6 +49,7 @@ class _HomePageState extends State<HomePage> {
                 onNavTrajectory: () => _scrollTo(trajectoryKey),
                 onNavProjects: () => _scrollTo(projectsKey),
               ),
+              const HeroSection(),
               statusCounter(
                 context,
                 '1',
@@ -56,25 +59,8 @@ class _HomePageState extends State<HomePage> {
               const SliverToBoxAdapter(child: SizedBox(height: 40)),
               sectionTitle(
                 context,
-                "Minha Trajetória",
-                "Experiência profissional.",
-                key: trajectoryKey,
-              ),
-              const TrajectorySection(experiences: experiences),
-              const SliverToBoxAdapter(child: SizedBox(height: 40)),
-              const SliverToBoxAdapter(child: SizedBox(height: 40)),
-              sectionTitle(
-                context,
-                "Minha Trajetória",
-                "Experiência acadêmica.",
-                key: academicKey,
-              ),
-              const TrajectorySection(experiences: academicBackground),
-              const SliverToBoxAdapter(child: SizedBox(height: 40)),
-              sectionTitle(
-                context,
-                "Em Produção & Beta",
-                "O foco é entregar valor real.",
+                "Projetos em Destaque",
+                "Soluções reais e experimentos.",
                 key: projectsKey,
               ),
               projectsGrid(
@@ -87,7 +73,7 @@ class _HomePageState extends State<HomePage> {
               sectionTitle(
                 context,
                 "Em Desenvolvimento",
-                "Explorando arquiteturas e desafios técnicos.",
+                "Explorando novas tecnologias.",
               ),
               projectsGrid(
                 context,
@@ -95,6 +81,20 @@ class _HomePageState extends State<HomePage> {
                 developmentProjects,
                 constraints,
               ),
+              const SliverToBoxAdapter(child: SizedBox(height: 60)),
+              
+              // Trajectory Section (Combined Professional & Academic)
+              sectionTitle(
+                context,
+                "Minha Trajetória",
+                "Experiência profissional e acadêmica.",
+                key: trajectoryKey,
+              ),
+              TrajectorySection(
+                professionalExperiences: experiences,
+                academicExperiences: academicBackground,
+              ),
+              const SliverToBoxAdapter(child: SizedBox(height: 40)),
               _buildFooter(context),
             ],
           );

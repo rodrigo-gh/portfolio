@@ -2,102 +2,201 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/data/models/experience_model.dart';
 
-class TrajectorySection extends StatelessWidget {
-  final List<ExperienceModel> experiences;
+class TrajectorySection extends StatefulWidget {
+  final List<ExperienceModel> professionalExperiences;
+  final List<ExperienceModel> academicExperiences;
 
-  const TrajectorySection({super.key, required this.experiences});
+  const TrajectorySection({
+    super.key,
+    required this.professionalExperiences,
+    required this.academicExperiences,
+  });
+
+  @override
+  State<TrajectorySection> createState() => _TrajectorySectionState();
+}
+
+class _TrajectorySectionState extends State<TrajectorySection> {
+  bool _showProfessional = true;
 
   @override
   Widget build(BuildContext context) {
+    final experiences = _showProfessional
+        ? widget.professionalExperiences
+        : widget.academicExperiences;
+
     return SliverToBoxAdapter(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Toggle Buttons
+            Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surfaceContainerHighest.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _TrajectoryTab(
+                    label: "Profissional",
+                    isSelected: _showProfessional,
+                    onTap: () => setState(() => _showProfessional = true),
+                  ),
+                  _TrajectoryTab(
+                    label: "Acadêmico",
+                    isSelected: !_showProfessional,
+                    onTap: () => setState(() => _showProfessional = false),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 40),
+
             // Timeline
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: experiences.length,
-              itemBuilder: (context, index) {
-                final exp = experiences[index];
-                final isLast = index == experiences.length - 1;
+            AnimatedSwitcher(
+              duration: 300.ms,
+              child: ListView.builder(
+                key: ValueKey<bool>(_showProfessional),
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: experiences.length,
+                itemBuilder: (context, index) {
+                  final exp = experiences[index];
+                  final isLast = index == experiences.length - 1;
 
-                return Stack(
-                  children: [
-                    // Line (Only if not last)
-                    if (!isLast)
-                      Positioned(
-                        top: 0,
-                        bottom: 0,
-                        left: 7, // Center of the 16px dot
-                        child: Container(
-                          width: 2,
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                  return Stack(
+                    children: [
+                      // Line (Only if not last)
+                      if (!isLast)
+                        Positioned(
+                          top: 24,
+                          bottom: 0,
+                          left: 11,
+                          child: Container(
+                            width: 2,
+                            color: Theme.of(context).dividerColor,
+                          ),
                         ),
-                      ),
-                    
-                    // Dot
-                    Container(
-                      margin: const EdgeInsets.only(top: 4), // Align with text top roughly
-                      width: 16,
-                      height: 16,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                          width: 3,
-                        ),
-                      ),
-                    ),
 
-                    // Content
-                    Padding(
-                      padding: const EdgeInsets.only(left: 32.0, bottom: 32.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            exp.dateRange,
-                            style: TextStyle(
+                      // Dot
+                      Container(
+                        margin: const EdgeInsets.only(top: 4),
+                        width: 24,
+                        height: 24,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primaryContainer,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 2,
+                          ),
+                        ),
+                        child: Center(
+                          child: Container(
+                            width: 8,
+                            height: 8,
+                            decoration: BoxDecoration(
                               color: Theme.of(context).colorScheme.primary,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
+                              shape: BoxShape.circle,
                             ),
                           ),
-                          const SizedBox(height: 4),
-                          Text(
-                            exp.title,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            exp.organization,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.8),
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            exp.description,
-                            style: TextStyle(
-                              color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
-                              height: 1.5,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ],
-                ).animate().fadeIn(delay: (index * 200).ms).slideX();
-              },
+
+                      // Content
+                      Padding(
+                        padding: const EdgeInsets.only(left: 48.0, bottom: 40.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Text(
+                                exp.dateRange,
+                                style: TextStyle(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              exp.title,
+                              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              exp.organization,
+                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: Theme.of(context).colorScheme.onSurface,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
+                            const SizedBox(height: 12),
+                            Text(
+                              exp.description,
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    height: 1.6,
+                                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ).animate().fadeIn(delay: (index * 100).ms).slideX(begin: 0.1, curve: Curves.easeOut);
+                },
+              ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _TrajectoryTab extends StatelessWidget {
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const _TrajectoryTab({
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: 200.ms,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? Theme.of(context).colorScheme.primary
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isSelected
+                ? Theme.of(context).colorScheme.onPrimary
+                : Theme.of(context).colorScheme.onSurfaceVariant,
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+          ),
         ),
       ),
     );

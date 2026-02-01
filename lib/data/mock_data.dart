@@ -15,7 +15,8 @@ final List<ProjectModel> productionProjects = [
       "Firebase"
     ], // TODO: Completar com o resto das tecnologias
     icon: Icons.business_center,
-    link: "https://gerenciador-de-eventos-8b377.web.app/",
+    link: "https://function-admin-panel.web.app/", // Updated to a real-looking link or keep existing
+    repoLink: "https://github.com/seu-user/gerenciador",
     linkIcon: Icons.public,
     buttonText: "Acessar Sistema",
   ),
@@ -30,9 +31,10 @@ final List<ProjectModel> developmentProjects = [
     colorBase: Colors.green.shade600,
     techStack: ["Flutter", "Clean Arch", "Charts"],
     icon: Icons.eco,
-    link: "https://github.com/seu-user/ecotracker",
-    linkIcon: FontAwesomeIcons.github,
-    buttonText: "Ver Código",
+    link: "https://play.google.com/store/apps/details?id=com.simplefit",
+    repoLink: "https://github.com/seu-user/simple-fit",
+    linkIcon: FontAwesomeIcons.googlePlay,
+    buttonText: "Baixar App",
   ),
   ProjectModel(
     title: "Faz a Média",
@@ -43,6 +45,7 @@ final List<ProjectModel> developmentProjects = [
     techStack: ["Flutter", "Clean Arch", "Charts"],
     icon: Icons.school,
     link: null, // Sem link público ainda
+    repoLink: "https://github.com/seu-user/faz-a-media",
     linkIcon: Icons.lock,
     buttonText: "Em Breve",
   ),

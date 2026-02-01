@@ -9,6 +9,7 @@ class ProjectModel {
   final IconData icon; // Placeholder para imagem
   // final String imageAsset; // Use isto no futuro
   final String? link;
+  final String? repoLink;
   final IconData? linkIcon;
   final String buttonText;
 
@@ -20,6 +21,7 @@ class ProjectModel {
     required this.techStack,
     required this.icon,
     this.link,
+    this.repoLink,
     this.linkIcon,
     this.buttonText = "Ver Projeto",
   });
