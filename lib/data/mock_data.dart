@@ -5,17 +5,49 @@ import 'package:portfolio/data/models/project_model.dart';
 
 final List<ProjectModel> productionProjects = [
   ProjectModel(
-    title: "Gerenciador de Eventos",
+    title: "Gerenciador de Eventos Organizacional",
     description:
-        "Sistema criado primariamente para auxiliar na gestão de eventos da paróquia Santô Antônio do Orleans, mas que pode ser utilizado para a gestão de eventos de qualquer organização.",
-    statusText: "WEB",
-    colorBase: Colors.blue.shade700,
+        "Sistema centralizado para gestão e escalas de eventos, focado em produtividade e consistência visual.",
+    details: """
+RESUMO DO PROJETO
+Aplicativo multi-plataforma desenvolvido para centralizar a criação e o gerenciamento de eventos em organizações. O foco principal é a produtividade na entrada de dados e a consistência visual através de um design system proprietário baseado em Material 3.
+
+CORE STACK
+• Frontend: Flutter / Dart
+• Gerenciamento de Estado: Riverpod
+• Backend: Firebase (Auth & Firestore)
+• Persistência & Localização: Intl e flutter_localizations (pt_BR)
+
+FUNCIONALIDADES IMPLEMENTADAS
+• Criação de Eventos em Lote: Fluxo com Stepper para replicar dados comuns.
+• Sistema de Convites: Detecção automática de convites e vinculação de organizações (RBAC).
+• Validação de Conflitos: Alerta de choques de horário.
+• Interface Premium: Layout adaptável e Design System consistente.
+• Exportação: Relatórios em Excel e PDF.
+
+ROADMAP & FUTURO
+1. Automação: Eventos recorrentes (RRule), sync com Google Calendar.
+2. Engajamento: Push notifications, Check-in com QR Code.
+3. Customização: Whitelabeling e campos personalizados.
+4. Insights: Dashboard de métricas e relatórios por e-mail.
+
+O sistema foi concebido com uma arquitetura modular que permite a implementação dessas funcionalidades sem a necessidade de refatoração do núcleo.""",
+    statusText: "WEB • PRODUÇÃO",
+    colorBase: Colors.indigo.shade800,
     techStack: [
       "Flutter Web",
-      "Firebase"
-    ], // TODO: Completar com o resto das tecnologias
-    icon: Icons.business_center,
-    link: "https://function-admin-panel.web.app/", // Updated to a real-looking link or keep existing
+      "Firebase",
+      "Riverpod",
+      "Intl",
+    ],
+    galleryAssets: [
+      "assets/projects/events/login.png",
+      "assets/projects/events/signup.png",
+      "assets/projects/events/home.png",
+      "assets/projects/events/create.png",
+    ],
+    icon: FontAwesomeIcons.calendarCheck,
+    link: "https://function-admin-panel.web.app/", 
     repoLink: "https://github.com/seu-user/gerenciador",
     linkIcon: Icons.public,
     buttonText: "Acessar Sistema",

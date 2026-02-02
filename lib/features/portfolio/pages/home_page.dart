@@ -4,9 +4,9 @@ import 'package:portfolio/core/utils/url_laucher.dart';
 import 'package:portfolio/core/theme/theme_data.dart';
 import 'package:portfolio/data/mock_data.dart';
 import 'package:portfolio/features/portfolio/widgets/header.dart';
-import 'package:portfolio/features/portfolio/widgets/projects_grid.dart';
+import 'package:portfolio/features/portfolio/widgets/project_showcase_item.dart';
+import 'package:portfolio/features/portfolio/widgets/project_summary_card.dart';
 import 'package:portfolio/features/portfolio/widgets/section_title.dart';
-import 'package:portfolio/features/portfolio/widgets/status_counter.dart';
 import 'package:portfolio/features/portfolio/widgets/trajectory_section.dart';
 
 import 'package:portfolio/features/portfolio/widgets/hero_section.dart';
@@ -50,40 +50,36 @@ class _HomePageState extends State<HomePage> {
                 onNavProjects: () => _scrollTo(projectsKey),
               ),
               const HeroSection(),
-              statusCounter(
-                context,
-                '1',
-                'Sistema Web\nem Produção',
-                Icons.public,
-              ),
               const SliverToBoxAdapter(child: SizedBox(height: 40)),
+              
+              // 1. SUMMARY SECTION
               sectionTitle(
                 context,
-                "Projetos em Destaque",
-                "Soluções reais e experimentos.",
-                key: projectsKey,
+                "Visão Geral",
+                "Todos os projetos em um relance.",
               ),
-              projectsGrid(
-                context,
-                isDesktop,
-                productionProjects,
-                constraints,
-              ),
-              const SliverToBoxAdapter(child: SizedBox(height: 40)),
-              sectionTitle(
-                context,
-                "Em Desenvolvimento",
-                "Explorando novas tecnologias.",
-              ),
-              projectsGrid(
-                context,
-                isDesktop,
-                developmentProjects,
-                constraints,
+              const SliverToBoxAdapter(child: SizedBox(height: 20)),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                sliver: SliverGrid(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: isDesktop ? 3 : 1,
+                    childAspectRatio: 1.2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final allProjects = [...productionProjects, ...developmentProjects];
+                      return ProjectSummaryCard(project: allProjects[index]);
+                    },
+                    childCount: productionProjects.length + developmentProjects.length,
+                  ),
+                ),
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 60)),
-              
-              // Trajectory Section (Combined Professional & Academic)
+
+              // 2. TRAJECTORY SECTION
               sectionTitle(
                 context,
                 "Minha Trajetória",
@@ -93,6 +89,33 @@ class _HomePageState extends State<HomePage> {
               TrajectorySection(
                 professionalExperiences: experiences,
                 academicExperiences: academicBackground,
+              ),
+              const SliverToBoxAdapter(child: SizedBox(height: 60)),
+
+              // 3. DETAILED SECTION
+              sectionTitle(
+                context,
+                "Exploração Detalhada",
+                "Mergulhe nos detalhes de cada projeto.",
+                key: projectsKey,
+              ),
+              const SliverToBoxAdapter(child: SizedBox(height: 20)),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final allProjects = [
+                      ...productionProjects,
+                      ...developmentProjects
+                    ];
+                    final project = allProjects[index];
+                    return ProjectShowcaseItem(
+                      project: project,
+                      isDesktop: isDesktop,
+                      isReversed: index % 2 != 0,
+                    );
+                  },
+                  childCount: productionProjects.length + developmentProjects.length,
+                ),
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 40)),
               _buildFooter(context),
