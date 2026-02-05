@@ -118,8 +118,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 20)),
               
-              // Changed from SliverList to SliverToBoxAdapter + Column to ensure keys work
-              // (SliverList builds lazily, so keys for off-screen items wouldn't be mounted)
+             
               SliverToBoxAdapter(
                 child: Column(
                   children: List.generate(allProjects.length, (index) {
@@ -147,11 +146,16 @@ class _HomePageState extends State<HomePage> {
   Widget _buildFooter(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        padding: const EdgeInsets.all(30),
+        padding: const EdgeInsets.all(40),
         color: Colors.grey.shade900,
         alignment: Alignment.center,
         child: Column(
           children: [
+            const CircleAvatar(
+              radius: 40,
+              backgroundImage: AssetImage('assets/images/profile_placeholder.png'),
+            ),
+             const SizedBox(height: 20),
             const SelectableText(
               "Vamos construir algo juntos?",
               style: TextStyle(color: Colors.white, fontSize: 18),
