@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage> {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.all(40),
-        color: Colors.grey.shade900,
+        color: Theme.of(context).colorScheme.inverseSurface,
         alignment: Alignment.center,
         child: Column(
           children: [
@@ -156,9 +156,11 @@ class _HomePageState extends State<HomePage> {
               backgroundImage: AssetImage('assets/images/profile_placeholder.png'),
             ),
              const SizedBox(height: 20),
-            const SelectableText(
+            SelectableText(
               "Vamos construir algo juntos?",
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.onInverseSurface,
+                  fontSize: 18),
             ),
             const SizedBox(height: 20),
             Row(
@@ -167,19 +169,23 @@ class _HomePageState extends State<HomePage> {
                 IconButton(
                   onPressed: () =>
                       launchCustomUrl("https://github.com/seu-user"),
-                  icon:
-                      const Icon(FontAwesomeIcons.github, color: Colors.white),
+                  icon: const Icon(FontAwesomeIcons.github,
+                          color: null), // Inherits from IconButton defaults or theme
                 ),
                 IconButton(
                   onPressed: () => launchCustomUrl("mailto:seuemail@gmail.com"),
-                  icon: const Icon(Icons.email, color: Colors.white),
+                  icon: const Icon(Icons.email, color: null),
                 ),
               ],
             ),
             const SizedBox(height: 20),
-            const SelectableText(
+            SelectableText(
               "Feito com Flutter Web.",
-              style: TextStyle(color: Colors.white54),
+              style: TextStyle(
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onInverseSurface
+                      .withValues(alpha: 0.54)),
             ),
           ],
         ),

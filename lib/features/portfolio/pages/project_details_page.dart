@@ -153,7 +153,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                   image: AssetImage(currentImage),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                    Colors.black.withValues(alpha: 0.7), 
+                    Colors.black.withValues(alpha: 0.7), // Keeping black as this is a cinematic background effect
                     BlendMode.darken
                   ),
                 ),
@@ -225,7 +225,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                 count: widget.project.galleryAssets.length,
                 effect: ExpandingDotsEffect(
                   activeDotColor: widget.project.colorBase,
-                  dotColor: Colors.white54,
+                  dotColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.54),
                   dotHeight: 6,
                   dotWidth: 6,
                 ),
@@ -274,14 +274,16 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
 
   Widget _buildNavButton({required IconData icon, required VoidCallback onPressed}) {
     return Material(
-      color: Colors.black.withValues(alpha: 0.3),
+      color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.8), // Using surface for better contrast
       shape: const CircleBorder(),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onPressed,
         child: Padding(
           padding: const EdgeInsets.all(12),
-          child: Icon(icon, color: Colors.white, size: 28),
+          child: Icon(icon,
+              color: Theme.of(context).colorScheme.onSurface,
+              size: 28), // Adapting icon color
         ),
       ),
     );
@@ -473,7 +475,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
           content,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             height: 1.8,
-            color: Colors.white70,
+            color: Theme.of(context).textTheme.bodyLarge?.color?.withValues(alpha: 0.7),
             fontSize: 16,
           ),
         ),
@@ -488,18 +490,18 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+        border: Border.all(color: Theme.of(context).dividerColor.withValues(alpha: 0.1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
               letterSpacing: 1.2,
-              color: Colors.white54,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.54),
             ),
           ),
           const SizedBox(height: 16),
@@ -520,13 +522,14 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
     final style = isPrimary 
       ? ElevatedButton.styleFrom(
           backgroundColor: color,
-          foregroundColor: Colors.white,
+          foregroundColor: Theme.of(context).colorScheme.onPrimary,
           padding: const EdgeInsets.symmetric(vertical: 20),
           elevation: 0,
         )
       : OutlinedButton.styleFrom(
-          foregroundColor: Colors.white,
-          side: BorderSide(color: Colors.white.withValues(alpha: 0.3)),
+          foregroundColor: Theme.of(context).colorScheme.primary,
+          side: BorderSide(
+              color: Theme.of(context).dividerColor.withValues(alpha: 0.3)),
           padding: const EdgeInsets.symmetric(vertical: 20),
         );
 

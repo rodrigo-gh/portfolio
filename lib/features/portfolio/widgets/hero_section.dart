@@ -163,26 +163,26 @@ class HeroSection extends StatelessWidget {
       runSpacing: 16,
       children: [
         ElevatedButton.icon(
-          onPressed: () => launchCustomUrl("https://linkedin.com/in/seu-perfil"),
+          onPressed: () => launchCustomUrl("https://linkedin.com/in/rodrigo-nogueira-knop"),
           icon: const Icon(FontAwesomeIcons.linkedin),
           label: const Text("LinkedIn"),
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
             backgroundColor: Theme.of(context).colorScheme.primary,
-            foregroundColor: Colors.white,
+            foregroundColor: Theme.of(context).colorScheme.onPrimary,
             textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
-        OutlinedButton.icon(
-          onPressed: () => launchCustomUrl("https://github.com/seu-user"),
-          icon: const Icon(FontAwesomeIcons.github),
-          label: const Text("GitHub"),
-          style: OutlinedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
-            side: BorderSide(color: Theme.of(context).colorScheme.outline),
-            textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ),
+        // OutlinedButton.icon(
+        //   onPressed: () => launchCustomUrl("https://github.com/rodrigo-gh"),
+        //   icon: const Icon(FontAwesomeIcons.github),
+        //   label: const Text("GitHub"),
+        //   style: OutlinedButton.styleFrom(
+        //     padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
+        //     side: BorderSide(color: Theme.of(context).colorScheme.outline),
+        //     textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        //   ),
+        // ),
       ],
     );
   }

@@ -13,7 +13,7 @@ Widget header(
     backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8),
     elevation: 0,
     title: Text(
-      "Rodrigo Dev", // Or strings["appName"]
+      "Rodrigo Knop Dev", // Or strings["appName"]
       style: GoogleFonts.outfit(
         fontWeight: FontWeight.bold,
         color: Theme.of(context).colorScheme.onSurface,

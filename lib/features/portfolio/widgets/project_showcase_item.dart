@@ -93,7 +93,7 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
                 bottomRight: Radius.circular(24),
               ),
               border: Border.all(
-                color: Colors.white.withValues(alpha: 0.1),
+                color: Theme.of(context).dividerColor.withValues(alpha: 0.1),
               ),
             ),
             child: _buildProjectInfo(context),
@@ -181,25 +181,37 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
-                      color: Colors.grey[900],
+                      color: Theme.of(context).colorScheme.surfaceContainerHighest,
                       padding: const EdgeInsets.all(20),
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Icon(Icons.broken_image,
-                                size: 48, color: Colors.white24),
+                            Icon(Icons.broken_image,
+                                size: 48,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurface
+                                    .withValues(alpha: 0.38)),
                             const SizedBox(height: 16),
                             Text(
                               "Imagem não encontrada:\n${widget.project.galleryAssets[index]}",
                               textAlign: TextAlign.center,
-                              style: const TextStyle(color: Colors.white24),
+                              style: TextStyle(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withValues(alpha: 0.38)),
                             ),
                             const SizedBox(height: 8),
-                            const Text(
+                            Text(
                               "Adicione os arquivos na pasta 'assets' do projeto.",
                               style: TextStyle(
-                                  color: Colors.white12, fontSize: 10),
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withValues(alpha: 0.38),
+                                  fontSize: 10),
                             ),
                           ],
                         ),
@@ -235,7 +247,7 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
                   count: widget.project.galleryAssets.length,
                   effect: ExpandingDotsEffect(
                     activeDotColor: widget.project.colorBase,
-                    dotColor: Colors.white.withValues(alpha: 0.3),
+                    dotColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3),
                     dotHeight: 8,
                     dotWidth: 8,
                     expansionFactor: 3,
@@ -403,7 +415,7 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
         SelectableText(
           widget.project.description,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Colors.white70,
+                color: Theme.of(context).textTheme.bodyLarge?.color?.withValues(alpha: 0.7),
                 height: 1.5,
               ),
           textAlign: center ? TextAlign.center : TextAlign.start,
@@ -440,7 +452,7 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
                 label: Text(widget.project.buttonText),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: widget.project.colorBase,
-                  foregroundColor: Colors.white,
+                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 ),
@@ -453,7 +465,8 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
                 style: OutlinedButton.styleFrom(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                  side: BorderSide(color: Colors.white.withValues(alpha: 0.3)),
+                  side: BorderSide(
+                      color: Theme.of(context).dividerColor.withValues(alpha: 0.3)),
                 ),
               ),
             TextButton.icon(
@@ -468,7 +481,8 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
               icon: const Icon(Icons.arrow_forward, size: 18),
               label: const Text("Ver Detalhes"),
               style: TextButton.styleFrom(
-                foregroundColor: Colors.white70,
+                foregroundColor:
+                    Theme.of(context).textTheme.bodyLarge?.color?.withValues(alpha: 0.7),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               ),
