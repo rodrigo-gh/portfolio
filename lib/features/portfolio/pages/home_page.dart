@@ -22,12 +22,25 @@ class _HomePageState extends State<HomePage> {
   final trajectoryKey = GlobalKey();
   final projectsKey = GlobalKey();
   final academicKey = GlobalKey();
+  
+  // Create a list of keys for each project
+  late List<GlobalKey> projectKeys;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize keys based on total number of projects
+    final totalProjects = productionProjects.length + developmentProjects.length;
+    projectKeys = List.generate(totalProjects, (_) => GlobalKey());
+  }
 
   void _scrollTo(GlobalKey key) {
+    if (key.currentContext == null) return;
     Scrollable.ensureVisible(
       key.currentContext!,
       duration: const Duration(milliseconds: 600),
       curve: Curves.easeInOut,
+      alignment: 0.1, // Align slightly below the top to show some margin
     );
   }
 
@@ -41,6 +54,8 @@ class _HomePageState extends State<HomePage> {
       body: LayoutBuilder(
         builder: (context, constraints) {
           final isDesktop = constraints.maxWidth > 800;
+          final allProjects = [...productionProjects, ...developmentProjects];
+
           return CustomScrollView(
             slivers: [
               header(
@@ -70,10 +85,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
-                      final allProjects = [...productionProjects, ...developmentProjects];
-                      return ProjectSummaryCard(project: allProjects[index]);
+                      return ProjectSummaryCard(
+                        project: allProjects[index],
+                        onTap: () => _scrollTo(projectKeys[index]),
+                      );
                     },
-                    childCount: productionProjects.length + developmentProjects.length,
+                    childCount: allProjects.length,
                   ),
                 ),
               ),
@@ -100,23 +117,24 @@ class _HomePageState extends State<HomePage> {
                 key: projectsKey,
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 20)),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final allProjects = [
-                      ...productionProjects,
-                      ...developmentProjects
-                    ];
-                    final project = allProjects[index];
-                    return ProjectShowcaseItem(
-                      project: project,
-                      isDesktop: isDesktop,
-                      isReversed: index % 2 != 0,
+              
+              // Changed from SliverList to SliverToBoxAdapter + Column to ensure keys work
+              // (SliverList builds lazily, so keys for off-screen items wouldn't be mounted)
+              SliverToBoxAdapter(
+                child: Column(
+                  children: List.generate(allProjects.length, (index) {
+                    return Container(
+                      key: projectKeys[index], // Assign the key here
+                      child: ProjectShowcaseItem(
+                        project: allProjects[index],
+                        isDesktop: isDesktop,
+                        isReversed: index % 2 != 0,
+                      ),
                     );
-                  },
-                  childCount: productionProjects.length + developmentProjects.length,
+                  }),
                 ),
               ),
+              
               const SliverToBoxAdapter(child: SizedBox(height: 40)),
               _buildFooter(context),
             ],

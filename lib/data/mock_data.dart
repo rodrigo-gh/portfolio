@@ -41,14 +41,13 @@ O sistema foi concebido com uma arquitetura modular que permite a implementaçã
       "Intl",
     ],
     galleryAssets: [
-      "assets/projects/events/login.png",
-      "assets/projects/events/signup.png",
-      "assets/projects/events/home.png",
-      "assets/projects/events/create.png",
+      "assets/projects/events_manager/images/login.png",
+      "assets/projects/events_manager/images/home.png",
+      "assets/projects/events_manager/images/event.png",
     ],
     icon: FontAwesomeIcons.calendarCheck,
-    link: "https://function-admin-panel.web.app/", 
-    repoLink: "https://github.com/seu-user/gerenciador",
+    link: "https://gerenciador-de-eventos-8b377.web.app/", 
+    // repoLink: "https://github.com/seu-user/gerenciador",
     linkIcon: Icons.public,
     buttonText: "Acessar Sistema",
   ),
@@ -67,6 +66,9 @@ final List<ProjectModel> developmentProjects = [
     repoLink: "https://github.com/seu-user/simple-fit",
     linkIcon: FontAwesomeIcons.googlePlay,
     buttonText: "Baixar App",
+    galleryAssets: [
+      "assets/images/wip_placeholder.png",
+    ],
   ),
   ProjectModel(
     title: "Faz a Média",
@@ -80,6 +82,9 @@ final List<ProjectModel> developmentProjects = [
     repoLink: "https://github.com/seu-user/faz-a-media",
     linkIcon: Icons.lock,
     buttonText: "Em Breve",
+    galleryAssets: [
+      "assets/images/wip_placeholder.png",
+    ],
   ),
 ];
 
