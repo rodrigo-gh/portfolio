@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/constants/strings.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/core/utils/url_laucher.dart';
 import 'package:portfolio/data/models/project_model.dart';
@@ -195,7 +196,7 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
                                     .withValues(alpha: 0.38)),
                             const SizedBox(height: 16),
                             Text(
-                              "Imagem não encontrada:\n${widget.project.galleryAssets[index]}",
+                              "${AppStrings.showcaseImageNotFound}\n${widget.project.galleryAssets[index]}",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Theme.of(context)
@@ -205,7 +206,7 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              "Adicione os arquivos na pasta 'assets' do projeto.",
+                              AppStrings.showcaseImageInstructions,
                               style: TextStyle(
                                   color: Theme.of(context)
                                       .colorScheme
@@ -463,7 +464,7 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
               OutlinedButton.icon(
                 onPressed: () => launchCustomUrl(widget.project.repoLink!),
                 icon: const Icon(FontAwesomeIcons.github, size: 18),
-                label: const Text("Código"),
+                label: const Text(AppStrings.showcaseCode),
                 style: OutlinedButton.styleFrom(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
@@ -481,7 +482,7 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
                 );
               },
               icon: const Icon(Icons.arrow_forward, size: 18),
-              label: const Text("Ver Detalhes"),
+              label: const Text(AppStrings.showcaseDetails),
               style: TextButton.styleFrom(
                 foregroundColor:
                     Theme.of(context).textTheme.bodyLarge?.color?.withValues(alpha: 0.7),

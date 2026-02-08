@@ -9,6 +9,7 @@ import 'package:portfolio/features/portfolio/widgets/project_summary_card.dart';
 import 'package:portfolio/features/portfolio/widgets/section_title.dart';
 import 'package:portfolio/features/portfolio/widgets/trajectory_section.dart';
 
+import 'package:portfolio/core/constants/strings.dart';
 import 'package:portfolio/features/portfolio/widgets/hero_section.dart';
 
 class HomePage extends StatefulWidget {
@@ -70,8 +71,8 @@ class _HomePageState extends State<HomePage> {
               // 1. SUMMARY SECTION
               sectionTitle(
                 context,
-                "Visão Geral",
-                "Todos os projetos em um relance.",
+                AppStrings.sectionOverviewTitle,
+                AppStrings.sectionOverviewSubtitle,
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 20)),
               SliverPadding(
@@ -99,11 +100,11 @@ class _HomePageState extends State<HomePage> {
               // 2. TRAJECTORY SECTION
               sectionTitle(
                 context,
-                "Minha Trajetória",
-                "Experiência profissional e acadêmica.",
+                AppStrings.sectionTrajectoryTitle,
+                AppStrings.sectionTrajectorySubtitle,
                 key: trajectoryKey,
               ),
-              TrajectorySection(
+              const TrajectorySection(
                 professionalExperiences: experiences,
                 academicExperiences: academicBackground,
               ),
@@ -112,8 +113,8 @@ class _HomePageState extends State<HomePage> {
               // 3. DETAILED SECTION
               sectionTitle(
                 context,
-                "Exploração Detalhada",
-                "Mergulhe nos detalhes de cada projeto.",
+                AppStrings.sectionDetailedTitle,
+                AppStrings.sectionDetailedSubtitle,
                 key: projectsKey,
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 20)),
@@ -157,7 +158,7 @@ class _HomePageState extends State<HomePage> {
             ),
              const SizedBox(height: 20),
             SelectableText(
-              "Vamos construir algo juntos?",
+              AppStrings.footerCta,
               style: TextStyle(
                   color: Theme.of(context).colorScheme.onInverseSurface,
                   fontSize: 18),
@@ -168,19 +169,19 @@ class _HomePageState extends State<HomePage> {
               children: [
                 IconButton(
                   onPressed: () =>
-                      launchCustomUrl("https://github.com/seu-user"),
+                      launchCustomUrl(AppStrings.profileGitHubUrl),
                   icon: const Icon(FontAwesomeIcons.github,
                           color: null), // Inherits from IconButton defaults or theme
                 ),
                 IconButton(
-                  onPressed: () => launchCustomUrl("mailto:seuemail@gmail.com"),
+                  onPressed: () => launchCustomUrl("mailto:${AppStrings.profileEmail}"),
                   icon: const Icon(Icons.email, color: null),
                 ),
               ],
             ),
             const SizedBox(height: 20),
             SelectableText(
-              "Feito com Flutter Web.",
+              AppStrings.footerMadeWith,
               style: TextStyle(
                   color: Theme.of(context)
                       .colorScheme

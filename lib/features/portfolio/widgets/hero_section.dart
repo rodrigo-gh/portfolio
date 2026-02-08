@@ -120,7 +120,7 @@ class HeroSection extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2)),
       ),
       child: Text(
-        "👋 Olá, bem-vindo(a) ao meu portfólio",
+        AppStrings.heroGreeting,
         style: Theme.of(context).textTheme.labelLarge?.copyWith(
               color: Theme.of(context).colorScheme.primary,
               fontWeight: FontWeight.w600,
@@ -131,7 +131,7 @@ class HeroSection extends StatelessWidget {
 
   Widget _buildTitle(BuildContext context, bool isDesktop) {
     return Text(
-      strings["headerTitle"] ?? "Transformando ideias\nem realidade digital",
+      AppStrings.heroTitle,
       style: Theme.of(context).textTheme.displayLarge?.copyWith(
         fontSize: isDesktop ? 64 : 40,
         fontWeight: FontWeight.w800,
@@ -146,7 +146,7 @@ class HeroSection extends StatelessWidget {
     return SizedBox(
       width: isDesktop ? 600 : double.infinity,
       child: Text(
-        strings["headerSubtitle"] ?? "Desenvolvedor Mobile & Web focado em criar experiências excepcionais com Flutter.",
+        AppStrings.heroSubtitle,
         style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontSize: isDesktop ? 22 : 18,
               fontWeight: FontWeight.w400,
@@ -163,9 +163,9 @@ class HeroSection extends StatelessWidget {
       runSpacing: 16,
       children: [
         ElevatedButton.icon(
-          onPressed: () => launchCustomUrl("https://linkedin.com/in/rodrigo-nogueira-knop"),
+          onPressed: () => launchCustomUrl(AppStrings.profileLinkedInUrl),
           icon: const Icon(FontAwesomeIcons.linkedin),
-          label: const Text("LinkedIn"),
+          label: const Text(AppStrings.heroButtonText),
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
             backgroundColor: Theme.of(context).colorScheme.primary,

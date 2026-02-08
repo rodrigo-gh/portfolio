@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/constants/strings.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/core/utils/url_laucher.dart';
 import 'package:portfolio/data/models/project_model.dart';
@@ -86,7 +87,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 0,
             leading: IconButton(
-              tooltip: 'Voltar',
+              tooltip: AppStrings.projectDetailsBack,
               icon: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
@@ -301,7 +302,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
             children: [
                _buildHeader(context),
                const SizedBox(height: 40),
-               _buildRichTextSection(context, "Sobre o Projeto", widget.project.details ?? widget.project.description),
+               _buildRichTextSection(context, AppStrings.projectDetailsAbout, widget.project.details ?? widget.project.description),
             ],
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.1, end: 0),
         ),
@@ -316,7 +317,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
             children: [
               _buildSidebarCard(
                 context, 
-                title: "Tecnologias",
+                title: AppStrings.projectDetailsTech,
                 child: Wrap(
                   spacing: 8,
                   runSpacing: 8,
@@ -329,14 +330,14 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
               const SizedBox(height: 24),
               _buildSidebarCard(
                 context, 
-                title: "Links",
+                title: AppStrings.projectDetailsLinks,
                 child: Column(
                   children: [
                     if (widget.project.link != null)
                       _buildLinkButton(
                         context, 
                         icon: widget.project.linkIcon ?? Icons.public, 
-                        label: widget.project.buttonText, 
+                        label: AppStrings.projectDetailsAccess, 
                         url: widget.project.link!,
                         isPrimary: true,
                         color: widget.project.colorBase,
@@ -347,7 +348,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                       _buildLinkButton(
                         context, 
                         icon: FontAwesomeIcons.github, 
-                        label: "Repositório", 
+                        label: AppStrings.projectDetailsRepo, 
                         url: widget.project.repoLink!,
                         isPrimary: false,
                         color: widget.project.colorBase,
@@ -377,7 +378,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                 child: _buildLinkButton(
                         context, 
                         icon: widget.project.linkIcon ?? Icons.public, 
-                        label: "Acessar", 
+                        label: AppStrings.projectDetailsAccess, 
                         url: widget.project.link!,
                         isPrimary: true,
                         color: widget.project.colorBase,
@@ -390,7 +391,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                 child: _buildLinkButton(
                         context, 
                         icon: FontAwesomeIcons.github, 
-                        label: "Código", 
+                        label: AppStrings.showcaseCode, 
                         url: widget.project.repoLink!,
                         isPrimary: false,
                         color: widget.project.colorBase,
@@ -402,7 +403,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
 
         // Tech Stack
         Text(
-          "Tecnologias",
+          AppStrings.projectDetailsTech,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
           ),
@@ -421,7 +422,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
         const SizedBox(height: 32),
 
         // Main Content
-        _buildRichTextSection(context, "Sobre o Projeto", widget.project.details ?? widget.project.description),
+        _buildRichTextSection(context, AppStrings.projectDetailsAbout, widget.project.details ?? widget.project.description),
       ],
     );
   }

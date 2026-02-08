@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/constants/strings.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Widget header(
@@ -10,10 +11,10 @@ Widget header(
   return SliverAppBar(
     pinned: true,
     floating: true,
-    backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8),
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0.8),
     elevation: 0,
     title: Text(
-      "Rodrigo Knop Dev", // Or strings["appName"]
+      AppStrings.profileName,
       style: GoogleFonts.outfit(
         fontWeight: FontWeight.bold,
         color: Theme.of(context).colorScheme.onSurface,
@@ -22,11 +23,11 @@ Widget header(
     centerTitle: false,
     actions: isDesktop
         ? [
-            _NavButton(label: "Trajetória", onTap: onNavTrajectory),
-            _NavButton(label: "Projetos", onTap: onNavProjects),
+            _NavButton(label: AppStrings.navTrajectory, onTap: onNavTrajectory),
+            _NavButton(label: AppStrings.navProjects, onTap: onNavProjects),
             const SizedBox(width: 24),
           ]
-        : null, // Mobile menu could be a Drawer or PopupMenu, for now keeping simple or adding later
+        : null,
   );
 }
 

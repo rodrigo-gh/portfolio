@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/constants/strings.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/data/models/experience_model.dart';
 
@@ -95,7 +96,7 @@ class _TrajectorySectionState extends State<TrajectorySection> {
           ),
           const SizedBox(height: 20),
           Text(
-            "Rodrigo", 
+            AppStrings.profileNameShort, 
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -103,7 +104,7 @@ class _TrajectorySectionState extends State<TrajectorySection> {
           ),
           const SizedBox(height: 8),
           Text(
-            "Software Developer",
+            AppStrings.profileRole,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),
@@ -111,7 +112,7 @@ class _TrajectorySectionState extends State<TrajectorySection> {
           ),
           const SizedBox(height: 24),
           const Text(
-            "Construindo soluções robustas e experiências digitais memoráveis através de código limpo e design centrado no usuário.",
+            AppStrings.profileBio,
             textAlign: TextAlign.center,
             style: TextStyle(height: 1.5, color: Colors.white70),
           ),
@@ -126,12 +127,12 @@ class _TrajectorySectionState extends State<TrajectorySection> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   _TrajectoryTab(
-                    label: "Carreira",
+                    label: AppStrings.trajectoryCareer,
                     isSelected: _showProfessional,
                     onTap: () => setState(() => _showProfessional = true),
                   ),
                   _TrajectoryTab(
-                    label: "Formação",
+                    label: AppStrings.trajectoryEducation,
                     isSelected: !_showProfessional,
                     onTap: () => setState(() => _showProfessional = false),
                   ),

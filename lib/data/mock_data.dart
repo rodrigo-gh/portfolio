@@ -10,20 +10,19 @@ final List<ProjectModel> productionProjects = [
         "Sistema centralizado para gestão e escalas de eventos, focado em produtividade e consistência visual.",
     details: """
 RESUMO DO PROJETO
-Aplicativo multi-plataforma desenvolvido para centralizar a criação e o gerenciamento de eventos em organizações. O foco principal é a produtividade na entrada de dados e a consistência visual através de um design system proprietário baseado em Material 3.
+Aplicativo multi-plataforma desenvolvido para centralizar a criação e o gerenciamento de eventos corporativos e organizacionais. O foco principal é a eficiência operacional na entrada de dados e a excelência na experiência do usuário, utilizando um design system proprietário baseado em Material 3.
 
 CORE STACK
 • Frontend: Flutter / Dart
 • Gerenciamento de Estado: Riverpod
 • Backend: Firebase (Auth & Firestore)
-• Persistência & Localização: Intl e flutter_localizations (pt_BR)
 
 FUNCIONALIDADES IMPLEMENTADAS
 • Criação de Eventos em Lote: Fluxo com Stepper para replicar dados comuns.
 • Sistema de Convites: Detecção automática de convites e vinculação de organizações (RBAC).
 • Validação de Conflitos: Alerta de choques de horário.
 • Interface Premium: Layout adaptável e Design System consistente.
-• Exportação: Relatórios em Excel e PDF.
+• Exportação: Relatórios em Excel.
 
 ROADMAP & FUTURO
 1. Automação: Eventos recorrentes (RRule), sync com Google Calendar.
@@ -57,7 +56,21 @@ final List<ProjectModel> developmentProjects = [
   ProjectModel(
     title: "Simple Fit",
     description:
-        "Aplicativo que visa faciliar o acompanhamento de treinos personalizados.",
+        "Aplicativo desenvolvido para facilitar o acompanhamento de treinos personalizados e evolução física.",
+    details: """
+RESUMO DO PROJETO
+O Simple Fit é focado em entusiastas do fitness que buscam uma forma simples e eficaz de registrar seus treinos. O sistema permite a criação de rotinas personalizadas e oferece visualização clara do progresso através de gráficos.
+
+CORE STACK
+• Frontend: Flutter / Dart (Clean Architecture)
+• Visualização: Charts adaptados
+• Estado: Gestão reativa com foco em performance
+
+FUNCIONALIDADES
+• Registro simplificado de séries e repetições.
+• Gráficos de evolução por grupamento muscular.
+• Histórico de treinos com busca rápida.
+""",
     statusText: "BETA na Playstore",
     colorBase: Colors.green.shade600,
     techStack: ["Flutter", "Clean Arch", "Charts"],
@@ -73,11 +86,11 @@ final List<ProjectModel> developmentProjects = [
   ProjectModel(
     title: "Faz a Média",
     description:
-        "Aplicativo que visa auxiliar o calculo do consumo médio de combustivel do veiculo. Possui funcionalidades como o compatilhamento de veículos entre usuários e o registro de abastecimentos.",
+        "Aplicativo para auxiliar no cálculo do consumo médio de combustível. Permite o compartilhamento de veículos entre usuários e registro detalhado de abastecimentos.",
     statusText: "EM DESENVOLVIMENTO",
     colorBase: Colors.purple.shade600,
     techStack: ["Flutter", "Clean Arch", "Charts"],
-    icon: Icons.school,
+    icon: Icons.local_gas_station,
     link: null, // Sem link público ainda
     repoLink: "https://github.com/seu-user/faz-a-media",
     linkIcon: Icons.lock,
@@ -113,21 +126,21 @@ const List<ExperienceModel> experiences = [
     organization: "Positivo Tecnologia",
     dateRange: "2024 - Atualmente",
     description:
-        "Desenvolvimento mobile em Flutter (Dart)\nDesenvolvimento nativo Android/iOS (Kotlin e Swift)\nAplicação de Clean Architecture e Atomic Design\nMetodologia Scrum\nIntegração com APIs REST\nNoções básicas de AWS\nFirebase",
+        "• Desenvolvimento de features complexas para ecossistema mobile em Flutter.\n• Manutenção e evolução de código nativo (Kotlin/Swift) para integrações de baixo nível.\n• Aplicação de Clean Architecture e Atomic Design.\n• Metodologia Scrum.\n• Integração com serviços AWS e arquitetura serverless com Firebase.",
   ),
   ExperienceModel(
-    title: "Estágio",
+    title: "Estagiário de Desenvolvimento",
     organization: "Positivo Tecnologia",
     dateRange: "2023 - 2024",
     description:
-        "Desenvolvimento mobile em Flutter (Dart)\nDesenvolvimento nativo Android/iOS (Kotlin e Swift)\nAplicação de Clean Architecture e Atomic Design\nMetodologia Scrum\nIntegração com APIs REST\nNoções básicas de AWS\nFirebase",
+        "• Auxílio no desenvolvimento mobile utilizando Flutter e Dart.\n• Implementação de componentes de UI baseados em Atomic Design.\n• Apoio na integração com APIs REST e diagnósticos de erros.\n• Participação ativa em cerimônias Scrum e aprendizado de fluxos de CI/CD.",
   ),
   ExperienceModel(
     title: "Desenvolvedor de Sistemas",
     organization: "Data Company Sistemas",
     dateRange: "2022 - 2023",
     description:
-        "Desenvolvimento mobile com Flutter (Dart)\nDesenvolvimento web com JavaScript/TypeScript (Node.js)\nTestes unitários e de integração\nDocumentação técnica (Docusaurus)",
+        "• Desenvolvimento de soluções mobile com Flutter.\n• Criação de ferramentas web e APIs utilizando JavaScript/TypeScript (Node.js).\n• Implementação de testes unitários e de integração para garantir a qualidade de software.\n• Elaboração de documentação técnica para desenvolvedores utilizando Docusaurus.",
   ),
 ];
 
@@ -142,21 +155,18 @@ const List<ExperienceModel> academicBackground = [
     title: "Pós-graduação em Programação para Dispositivos Móveis",
     organization: "UTFPR",
     dateRange: "2026 - Presente",
-    description:
-        "Pós-graduação em Programação para Dispositivos Móveis UTFPR – Início previsto – 04/2026",
+    description: "Especialização focada em arquiteturas avançadas, performance e desenvolvimento nativo moderno.",
   ),
   ExperienceModel(
-    title: "Tecnólogo em Análise e desenvolvimento de Sistemas",
+    title: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
     organization: "PUCPR",
     dateRange: "2023 - 2025",
-    description:
-        "Tecnólogo em Análise e desenvolvimento de Sistemas – PUCPR - Início – 01/2023 – Concluído – 09/2025",
+    description: "Formação focada em engenharia de software, processos ágeis e tecnologias modernas de desenvolvimento.",
   ),
   ExperienceModel(
-    title: "Bacharelado em Ciência da Computação",
+    title: "Bacharelado em Ciência da Computação (Incompleto)",
     organization: "UDESC",
-    dateRange: "2017 - 2021",
-    description:
-        "Bacharelado em Ciência da Computação – UDESC - Início – 06/2019 – Trancado em – 01/2023",
+    dateRange: "2019 - 2022",
+    description: "Monitor da disciplina de algoritmos por 2 anos. Iniciação científica com foco em Aprendizado de Máquina.",
   ),
 ];
