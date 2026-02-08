@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio/core/utils/url_laucher.dart';
 import 'package:portfolio/core/theme/theme_data.dart';
 import 'package:portfolio/data/mock_data.dart';
 import 'package:portfolio/features/portfolio/widgets/header.dart';
@@ -11,6 +9,7 @@ import 'package:portfolio/features/portfolio/widgets/trajectory_section.dart';
 
 import 'package:portfolio/core/constants/strings.dart';
 import 'package:portfolio/features/portfolio/widgets/hero_section.dart';
+import 'package:portfolio/features/portfolio/widgets/footer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -136,60 +135,10 @@ class _HomePageState extends State<HomePage> {
               ),
               
               const SliverToBoxAdapter(child: SizedBox(height: 40)),
-              _buildFooter(context),
+              const SliverToBoxAdapter(child: Footer()),
             ],
           );
         },
-      ),
-    );
-  }
-
-  Widget _buildFooter(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Container(
-        padding: const EdgeInsets.all(40),
-        color: Theme.of(context).colorScheme.inverseSurface,
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            const CircleAvatar(
-              radius: 40,
-              backgroundImage: AssetImage('assets/images/profile_placeholder.png'),
-            ),
-             const SizedBox(height: 20),
-            SelectableText(
-              AppStrings.footerCta,
-              style: TextStyle(
-                  color: Theme.of(context).colorScheme.onInverseSurface,
-                  fontSize: 18),
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: () =>
-                      launchCustomUrl(AppStrings.profileGitHubUrl),
-                  icon: const Icon(FontAwesomeIcons.github,
-                          color: null), // Inherits from IconButton defaults or theme
-                ),
-                IconButton(
-                  onPressed: () => launchCustomUrl("mailto:${AppStrings.profileEmail}"),
-                  icon: const Icon(Icons.email, color: null),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            SelectableText(
-              AppStrings.footerMadeWith,
-              style: TextStyle(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onInverseSurface
-                      .withValues(alpha: 0.54)),
-            ),
-          ],
-        ),
       ),
     );
   }
