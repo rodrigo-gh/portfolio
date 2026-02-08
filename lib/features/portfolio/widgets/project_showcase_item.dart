@@ -452,7 +452,9 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
                 label: Text(widget.project.buttonText),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: widget.project.colorBase,
-                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                  foregroundColor: widget.project.colorBase.computeLuminance() > 0.5
+                      ? Colors.black
+                      : Colors.white,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 ),

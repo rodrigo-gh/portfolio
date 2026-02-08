@@ -522,7 +522,9 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
     final style = isPrimary 
       ? ElevatedButton.styleFrom(
           backgroundColor: color,
-          foregroundColor: Theme.of(context).colorScheme.onPrimary,
+          foregroundColor: color.computeLuminance() > 0.5
+              ? Colors.black
+              : Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 20),
           elevation: 0,
         )
