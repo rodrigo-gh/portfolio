@@ -27,7 +27,7 @@ final ThemeData lightTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.light,
   colorScheme: ColorScheme.fromSeed(
-    seedColor: const Color(0xFF0EA5E9), // Sky 500
+    seedColor: const Color(0xFF0EA5E9), // Sky 500 
     brightness: Brightness.light,
     primary: const Color(0xFF0284C7), // Sky 600
     secondary: const Color(0xFF8B5CF6), // Violet 500
