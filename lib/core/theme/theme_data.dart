@@ -9,7 +9,6 @@ void toggleTheme() {
       : ThemeMode.light;
 }
 
-// Modern Typography: Outfit for Headings, Inter for Body
 TextTheme _buildTextTheme(TextTheme base) {
   return GoogleFonts.interTextTheme(base).copyWith(
     displayLarge: GoogleFonts.outfit(textStyle: base.displayLarge),
