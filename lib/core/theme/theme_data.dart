@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// Simple Global State for Theme Mode
 final ValueNotifier<ThemeMode> themeModeNotifier = ValueNotifier(ThemeMode.dark);
 
 void toggleTheme() {
