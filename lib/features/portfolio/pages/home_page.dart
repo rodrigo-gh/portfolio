@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   final trajectoryKey = GlobalKey();
   final projectsKey = GlobalKey();
   final academicKey = GlobalKey();
+  final heroKey = GlobalKey();
 
   // Create a list of keys for each project
   late List<GlobalKey> projectKeys;
@@ -62,10 +63,11 @@ class _HomePageState extends State<HomePage> {
               header(
                 isDesktop,
                 context,
+                onNavBegin: () => _scrollTo(heroKey),
                 onNavTrajectory: () => _scrollTo(trajectoryKey),
                 onNavProjects: () => _scrollTo(projectsKey),
               ),
-              const HeroSection(),
+              HeroSection(key: heroKey),
               const SliverToBoxAdapter(child: SizedBox(height: 40)),
 
               // 2. TRAJECTORY SECTION

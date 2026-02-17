@@ -7,8 +7,12 @@ class AppStrings {
   static const String profileEmail = "rodrigo_knop@outlook.com";
   static const String profileGitHubUrl = "https://github.com/rodrigo-gh";
   static const String profileLinkedInUrl = "https://linkedin.com/in/rodrigo-nogueira-knop";
+  
+  // App Title
+  static const String appTitle = "Rodrigo Knop | Portfolio";
 
   // Navigation
+  static const String navBegin = "Início";
   static const String navTrajectory = "Trajetória";
   static const String navProjects = "Projetos";
 

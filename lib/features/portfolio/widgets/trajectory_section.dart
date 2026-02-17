@@ -91,7 +91,7 @@ class _TrajectorySectionState extends State<TrajectorySection> {
             ),
             child: const CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage('assets/images/profile_placeholder.png'),
+              backgroundImage: AssetImage('assets/images/profile.png'),
             ),
           ),
           const SizedBox(height: 20),

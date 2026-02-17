@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 Widget header(
   bool isDesktop,
   BuildContext context, {
+  required VoidCallback onNavBegin,
   required VoidCallback onNavTrajectory,
   required VoidCallback onNavProjects,
 }) {
@@ -23,6 +24,7 @@ Widget header(
     ),
     centerTitle: false,
     actions: [
+      _NavButton(label: AppStrings.navBegin, onTap: onNavBegin),
       _NavButton(label: AppStrings.navTrajectory, onTap: onNavTrajectory),
       _NavButton(label: AppStrings.navProjects, onTap: onNavProjects),
       const SizedBox(width: 24),
