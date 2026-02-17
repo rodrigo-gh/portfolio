@@ -10,7 +10,8 @@ final List<ProjectModel> productionProjects = [
         "Sistema centralizado para gestão e escalas de eventos, focado em produtividade e consistência visual.",
     details: """
 RESUMO DO PROJETO
-Aplicativo multi-plataforma desenvolvido para centralizar a criação e o gerenciamento de eventos corporativos e organizacionais. O foco principal é a eficiência operacional na entrada de dados e a excelência na experiência do usuário, utilizando um design system proprietário baseado em Material 3.
+Sistema atulmente em uso pela Paróquia Santô Antônio de Orleans em Curitiba.
+Aplicativo desenvolvido para facilitar o gerenciamento de eventos corporativos e organizacionais de forma simples, intuitiva e colaborativa.
 
 CORE STACK
 • Frontend: Flutter / Dart
@@ -19,8 +20,8 @@ CORE STACK
 
 FUNCIONALIDADES IMPLEMENTADAS
 • Criação de Eventos em Lote: Fluxo com Stepper para replicar dados comuns.
-• Sistema de Convites: Detecção automática de convites e vinculação de organizações (RBAC).
-• Validação de Conflitos: Alerta de choques de horário.
+• Sistema de Convites: Detecção automática de convites e vinculação de organizações.
+• Validação de Conflitos: Alerta de choques de horário e datas.
 • Interface Premium: Layout adaptável e Design System consistente.
 • Exportação: Relatórios em Excel.
 
@@ -28,7 +29,6 @@ ROADMAP & FUTURO
 1. Automação: Eventos recorrentes (RRule), sync com Google Calendar.
 2. Engajamento: Push notifications, Check-in com QR Code.
 3. Customização: Whitelabeling e campos personalizados.
-4. Insights: Dashboard de métricas e relatórios por e-mail.
 
 O sistema foi concebido com uma arquitetura modular que permite a implementação dessas funcionalidades sem a necessidade de refatoração do núcleo.""",
     statusText: "WEB • PRODUÇÃO",
@@ -37,7 +37,6 @@ O sistema foi concebido com uma arquitetura modular que permite a implementaçã
       "Flutter Web",
       "Firebase",
       "Riverpod",
-      "Intl",
     ],
     galleryAssets: [
       "assets/projects/events_manager/images/login.png",
@@ -45,7 +44,7 @@ O sistema foi concebido com uma arquitetura modular que permite a implementaçã
       "assets/projects/events_manager/images/event.png",
     ],
     icon: FontAwesomeIcons.calendarCheck,
-    link: "https://gerenciador-de-eventos-8b377.web.app/", 
+    link: "https://gerenciador-de-eventos-8b377.web.app/",
     // repoLink: "https://github.com/seu-user/gerenciador",
     linkIcon: Icons.public,
     buttonText: "Acessar Sistema",
@@ -73,12 +72,12 @@ FUNCIONALIDADES
 """,
     statusText: "BETA na Playstore",
     colorBase: Colors.green.shade600,
-    techStack: ["Flutter", "Clean Arch", "Charts"],
+    techStack: ["Flutter", "Clean Arch", "Gemini", "Isar"],
     icon: Icons.eco,
     link: "https://play.google.com/store/apps/details?id=com.simplefit",
-    repoLink: "https://github.com/seu-user/simple-fit",
+    // repoLink: "https://github.com/seu-user/simple-fit",
     linkIcon: FontAwesomeIcons.googlePlay,
-    buttonText: "Baixar App",
+    buttonText: "EM BREVE",
     galleryAssets: [
       "assets/images/wip_placeholder.png",
     ],
@@ -89,10 +88,10 @@ FUNCIONALIDADES
         "Aplicativo para auxiliar no cálculo do consumo médio de combustível. Permite o compartilhamento de veículos entre usuários e registro detalhado de abastecimentos.",
     statusText: "EM DESENVOLVIMENTO",
     colorBase: Colors.purple.shade600,
-    techStack: ["Flutter", "Clean Arch", "Charts"],
+    techStack: ["Flutter", "Clean Arch", "GoRouter", "Firebase"],
     icon: Icons.local_gas_station,
-    link: null, // Sem link público ainda
-    repoLink: "https://github.com/seu-user/faz-a-media",
+    link: null, // Sem link público ain
+    // repoLink: "https://github.com/seu-user/faz-a-media",
     linkIcon: Icons.lock,
     buttonText: "Em Breve",
     galleryAssets: [
@@ -118,7 +117,6 @@ FUNCIONALIDADES
 // • Desenvolvimento web com JavaScript/TypeScript (Node.js)
 // • Testes unitários e de integração
 // • Documentação técnica (Docusaurus)
-
 
 const List<ExperienceModel> experiences = [
   ExperienceModel(
@@ -155,18 +153,21 @@ const List<ExperienceModel> academicBackground = [
     title: "Pós-graduação em Programação para Dispositivos Móveis",
     organization: "UTFPR",
     dateRange: "2026 - Presente",
-    description: "Especialização focada em arquiteturas avançadas, performance e desenvolvimento nativo moderno.",
+    description:
+        "Especialização focada em arquiteturas avançadas, performance e desenvolvimento nativo moderno.",
   ),
   ExperienceModel(
     title: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
     organization: "PUCPR",
     dateRange: "2023 - 2025",
-    description: "Formação focada em engenharia de software, processos ágeis e tecnologias modernas de desenvolvimento.",
+    description:
+        "Formação focada em engenharia de software, processos ágeis e tecnologias modernas de desenvolvimento.",
   ),
   ExperienceModel(
     title: "Bacharelado em Ciência da Computação (Incompleto)",
     organization: "UDESC",
     dateRange: "2019 - 2022",
-    description: "Monitor da disciplina de algoritmos por 2 anos. Iniciação científica com foco em Aprendizado de Máquina.",
+    description:
+        "Monitor da disciplina de algoritmos por 2 anos. Iniciação científica com foco em Aprendizado de Máquina.",
   ),
 ];

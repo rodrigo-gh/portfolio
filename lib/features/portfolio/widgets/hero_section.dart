@@ -105,7 +105,7 @@ class HeroSection extends StatelessWidget {
       child: CircleAvatar(
         radius: 180,
         backgroundColor: Theme.of(context).colorScheme.surface,
-        foregroundImage: const AssetImage('assets/images/profile_placeholder.png'),
+        foregroundImage: const AssetImage('assets/images/profile.png'),
       ),
     );
   }

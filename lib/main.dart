@@ -17,7 +17,7 @@ class MyPortfolioApp extends StatelessWidget {
       valueListenable: themeModeNotifier,
       builder: (context, currentMode, _) {
         return MaterialApp(
-          title: AppStrings.heroTitle,
+          title: AppStrings.appTitle,
           debugShowCheckedModeBanner: false,
           theme: lightTheme,
           darkTheme: darkTheme,
