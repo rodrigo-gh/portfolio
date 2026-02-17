@@ -264,7 +264,7 @@ class _ProjectShowcaseItemState extends State<ProjectShowcaseItem> {
               ),
             ),
             // Navigation Arrows (Desktop Only)
-            if (widget.isDesktop && widget.project.galleryAssets.length > 1) ...[
+            if (widget.project.galleryAssets.length > 1) ...[
               // Previous Button
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 200),
