@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   final trajectoryKey = GlobalKey();
   final projectsKey = GlobalKey();
   final academicKey = GlobalKey();
-  
+
   // Create a list of keys for each project
   late List<GlobalKey> projectKeys;
 
@@ -30,7 +30,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     // Initialize keys based on total number of projects
-    final totalProjects = productionProjects.length + developmentProjects.length;
+    final totalProjects =
+        productionProjects.length + developmentProjects.length;
     projectKeys = List.generate(totalProjects, (_) => GlobalKey());
   }
 
@@ -66,12 +67,26 @@ class _HomePageState extends State<HomePage> {
               ),
               const HeroSection(),
               const SliverToBoxAdapter(child: SizedBox(height: 40)),
-              
+
+              // 2. TRAJECTORY SECTION
+              sectionTitle(
+                context,
+                AppStrings.sectionTrajectoryTitle,
+                AppStrings.sectionTrajectorySubtitle,
+                key: trajectoryKey,
+              ),
+              const TrajectorySection(
+                professionalExperiences: experiences,
+                academicExperiences: academicBackground,
+              ),
+              const SliverToBoxAdapter(child: SizedBox(height: 60)),
+
               // 1. SUMMARY SECTION
               sectionTitle(
                 context,
                 AppStrings.sectionOverviewTitle,
                 AppStrings.sectionOverviewSubtitle,
+                key: projectsKey,
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 20)),
               SliverPadding(
@@ -96,29 +111,15 @@ class _HomePageState extends State<HomePage> {
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 60)),
 
-              // 2. TRAJECTORY SECTION
-              sectionTitle(
-                context,
-                AppStrings.sectionTrajectoryTitle,
-                AppStrings.sectionTrajectorySubtitle,
-                key: trajectoryKey,
-              ),
-              const TrajectorySection(
-                professionalExperiences: experiences,
-                academicExperiences: academicBackground,
-              ),
-              const SliverToBoxAdapter(child: SizedBox(height: 60)),
-
               // 3. DETAILED SECTION
               sectionTitle(
                 context,
                 AppStrings.sectionDetailedTitle,
                 AppStrings.sectionDetailedSubtitle,
-                key: projectsKey,
+                // key: projectsKey,
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 20)),
-              
-             
+
               SliverToBoxAdapter(
                 child: Column(
                   children: List.generate(allProjects.length, (index) {
@@ -133,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                   }),
                 ),
               ),
-              
+
               const SliverToBoxAdapter(child: SizedBox(height: 40)),
               const SliverToBoxAdapter(child: Footer()),
             ],
