@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/constants/strings.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/features/portfolio/widgets/mobile_nav_sheet.dart';
 
 Widget header(
   bool isDesktop,
@@ -23,12 +24,34 @@ Widget header(
       ),
     ),
     centerTitle: false,
-    actions: [
-      _NavButton(label: AppStrings.navBegin, onTap: onNavBegin),
-      _NavButton(label: AppStrings.navTrajectory, onTap: onNavTrajectory),
-      _NavButton(label: AppStrings.navProjects, onTap: onNavProjects),
-      const SizedBox(width: 24),
-    ],
+    actions: isDesktop
+        ? [
+            _NavButton(label: AppStrings.navBegin, onTap: onNavBegin),
+            _NavButton(label: AppStrings.navTrajectory, onTap: onNavTrajectory),
+            _NavButton(label: AppStrings.navProjects, onTap: onNavProjects),
+            const SizedBox(width: 24),
+          ]
+        : [
+            IconButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  backgroundColor: Colors.transparent,
+                  isScrollControlled: true, // Permite customizar tamanho se necessário
+                  builder: (context) => MobileNavSheet(
+                    onNavBegin: onNavBegin,
+                    onNavTrajectory: onNavTrajectory,
+                    onNavProjects: onNavProjects,
+                  ),
+                );
+              },
+              icon: const Icon(Icons.menu),
+              style: IconButton.styleFrom(
+                foregroundColor: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+            const SizedBox(width: 8),
+          ],
   );
 }
 

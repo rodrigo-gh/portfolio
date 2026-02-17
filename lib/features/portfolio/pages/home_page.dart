@@ -92,7 +92,11 @@ class _HomePageState extends State<HomePage> {
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 20)),
               SliverPadding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding: EdgeInsets.symmetric(
+                  horizontal: constraints.maxWidth > 1200
+                      ? (constraints.maxWidth - 1200) / 2
+                      : 24,
+                ),
                 sliver: SliverGrid(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: isDesktop ? 3 : 1,
@@ -123,17 +127,22 @@ class _HomePageState extends State<HomePage> {
               const SliverToBoxAdapter(child: SizedBox(height: 20)),
 
               SliverToBoxAdapter(
-                child: Column(
-                  children: List.generate(allProjects.length, (index) {
-                    return Container(
-                      key: projectKeys[index], // Assign the key here
-                      child: ProjectShowcaseItem(
-                        project: allProjects[index],
-                        isDesktop: isDesktop,
-                        isReversed: index % 2 != 0,
-                      ),
-                    );
-                  }),
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 1200),
+                    child: Column(
+                      children: List.generate(allProjects.length, (index) {
+                        return Container(
+                          key: projectKeys[index], // Assign the key here
+                          child: ProjectShowcaseItem(
+                            project: allProjects[index],
+                            isDesktop: isDesktop,
+                            isReversed: index % 2 != 0,
+                          ),
+                        );
+                      }),
+                    ),
+                  ),
                 ),
               ),
 

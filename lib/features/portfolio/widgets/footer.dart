@@ -18,14 +18,19 @@ class Footer extends StatelessWidget {
         horizontal: isDesktop ? 100 : 24,
         vertical: 60,
       ),
-      child: Column(
-        children: [
-          _buildCtaSection(context),
-          const SizedBox(height: 48),
-          Divider(color: theme.dividerColor.withValues(alpha: 0.1)),
-          const SizedBox(height: 48),
-          _buildBottomSection(context, isDesktop),
-        ],
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1200),
+          child: Column(
+            children: [
+              _buildCtaSection(context),
+              const SizedBox(height: 48),
+              Divider(color: theme.dividerColor.withValues(alpha: 0.1)),
+              const SizedBox(height: 48),
+              _buildBottomSection(context, isDesktop),
+            ],
+          ),
+        ),
       ),
     );
   }
