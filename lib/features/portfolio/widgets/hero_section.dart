@@ -38,32 +38,39 @@ class HeroSection extends StatelessWidget {
   }
 
   Widget _buildDesktopLayout(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        // Left Content (Text)
-        Expanded(
-          flex: 5,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildGreeting(context).animate().fadeIn(duration: 600.ms).slideX(begin: -0.2),
-              const SizedBox(height: 16),
-              _buildTitle(context, true).animate().fadeIn(delay: 200.ms, duration: 600.ms).slideX(begin: -0.2),
-              const SizedBox(height: 24),
-              _buildDescription(context, true).animate().fadeIn(delay: 400.ms, duration: 600.ms),
-              const SizedBox(height: 40),
-              _buildActions(context).animate().fadeIn(delay: 600.ms, duration: 600.ms).slideY(begin: 0.2),
-            ],
-          ),
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 1200),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Left Content (Text)
+            Expanded(
+              flex: 5,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildGreeting(context).animate().fadeIn(duration: 600.ms).slideX(begin: -0.2),
+                  const SizedBox(height: 16),
+                  _buildTitle(context, true).animate().fadeIn(delay: 200.ms, duration: 600.ms).slideX(begin: -0.2),
+                  const SizedBox(height: 24),
+                  _buildDescription(context, true).animate().fadeIn(delay: 400.ms, duration: 600.ms),
+                  const SizedBox(height: 40),
+                  _buildActions(context).animate().fadeIn(delay: 600.ms, duration: 600.ms).slideY(begin: 0.2),
+                ],
+              ),
+            ),
+            const SizedBox(width: 40),
+            // Right Content (Image)
+            Expanded(
+              flex: 4,
+              child: Center(
+                child: _buildHeroImage(context).animate().fadeIn(delay: 300.ms, duration: 800.ms).scale(),
+              ),
+            ),
+          ],
         ),
-        const SizedBox(width: 40),
-        // Right Content (Image)
-        Expanded(
-          flex: 4,
-          child: _buildHeroImage(context).animate().fadeIn(delay: 300.ms, duration: 800.ms).scale(),
-        ),
-      ],
+      ),
     );
   }
 
@@ -71,13 +78,6 @@ class HeroSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 60),
-        Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 250),
-            child: _buildHeroImage(context).animate().fadeIn(duration: 600.ms).scale(),
-          ),
-        ),
         const SizedBox(height: 40),
         _buildGreeting(context).animate().fadeIn(delay: 200.ms, duration: 600.ms),
         const SizedBox(height: 16),

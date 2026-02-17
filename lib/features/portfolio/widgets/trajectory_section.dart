@@ -33,29 +33,34 @@ class _TrajectorySectionState extends State<TrajectorySection> {
       child: Container(
         padding: EdgeInsets.symmetric(
             horizontal: isDesktop ? 60 : 24, vertical: 20),
-        child: isDesktop
-            ? Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Sticky Profile Card
-                  Container(
-                    width: 300,
-                    margin: const EdgeInsets.only(right: 60),
-                    child: _buildStickyProfile(context),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1200),
+            child: isDesktop
+                ? Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Sticky Profile Card
+                      Container(
+                        width: 300,
+                        margin: const EdgeInsets.only(right: 60),
+                        child: _buildStickyProfile(context),
+                      ),
+                      // Timeline
+                      Expanded(
+                        child: _buildTimeline(context, experiences),
+                      ),
+                    ],
+                  )
+                : Column(
+                    children: [
+                      _buildStickyProfile(context),
+                      const SizedBox(height: 40),
+                      _buildTimeline(context, experiences),
+                    ],
                   ),
-                  // Timeline
-                  Expanded(
-                    child: _buildTimeline(context, experiences),
-                  ),
-                ],
-              )
-            : Column(
-                children: [
-                  _buildStickyProfile(context),
-                  const SizedBox(height: 40),
-                  _buildTimeline(context, experiences),
-                ],
-              ),
+          ),
+        ),
       ),
     );
   }
